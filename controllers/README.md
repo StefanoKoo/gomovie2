@@ -1,0 +1,1 @@
+Controllers 에는 db 와의 연동을 기록
