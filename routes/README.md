@@ -1,0 +1,1 @@
+routes 에는 frontend와의 연동을 위한 REST API 명세

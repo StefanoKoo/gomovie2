@@ -1,9 +1,14 @@
 package main
 
 import (
-	"fmt"
+	"gomovie2/config"
+	"gomovie2/models"
 )
 
 func main() {
-	fmt.Println("Hello World")
+	config.Init()
+
+	user := models.Users{UserID: "user1", Email: "poyo062@naver.com", Password: "test", Name: "test"}
+	config.DB.Create(&user)
+
 }

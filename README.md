@@ -8,7 +8,7 @@
  - Running time
  - Rate
  - Date(Open)
- - Description
+ - Overview
 
 2. Series
  - Title
