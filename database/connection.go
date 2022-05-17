@@ -1,6 +1,8 @@
 package config
 
 import (
+	models "gomovie2/models"
+
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -8,12 +10,13 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	var err error
+	connection, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 
-	DB, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect DB")
 	}
 
-	// DB.AutoMigrate(&models.Movies{}, &models.Users{})
+	DB = connection
+
+	connection.AutoMigrate(&models.Users{})
 }

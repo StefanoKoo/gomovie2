@@ -3,9 +3,10 @@ package routes
 import (
 	"gomovie2/controllers"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
 )
 
-func Setup(r *gin.Engine) {
-	r.POST("/api/v1/register", controllers.Register)
+func Setup(app *fiber.App) {
+	app.Post("/api/register", controllers.Register)
+	app.Post("/api/login", controllers.Login)
 }

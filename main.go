@@ -2,18 +2,19 @@ package main
 
 import (
 	database "gomovie2/database"
-	"gomovie2/routes"
+	routes "gomovie2/routes"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
 	database.Connect()
 
-	// user := models.Users{UserID: "user1", Email: "poyo062@naver.com", Password: "test", Name: "test"}
-	// config.DB.Create(&user)
-	r := gin.Default()
-	routes.Setup(r)
-
-	r.Run()
+	app := fiber.New()
+	app.Use(cors.New(cors.Config{
+		AllowCredentials: true,
+	}))
+	routes.Setup(app)
+	app.Listen(":3000")
 }
